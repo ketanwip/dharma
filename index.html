@@ -282,6 +282,10 @@
             document.getElementById('reset-btn').addEventListener('click', () => this.reset());
         }
         render() {
+            // Always remove any existing perspective bar before rendering
+            let oldBar = document.getElementById('perspective-bar');
+            if (oldBar) oldBar.remove();
+
             this.treeContent.innerHTML = '';
             this.visibleNodes.clear();
             // Handle multi-perspective nodes
@@ -296,10 +300,6 @@
             this.showNodesSequentially();
         }
         renderPerspectives(node) {
-            // Remove any existing perspective bar
-            let oldBar = document.getElementById('perspective-bar');
-            if (oldBar) oldBar.remove();
-
             // Perspective selector UI
             const perspectiveBar = document.createElement('div');
             perspectiveBar.className = 'perspective-bar';
