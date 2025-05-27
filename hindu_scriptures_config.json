@@ -1,0 +1,331 @@
+{
+  "metadata": {
+    "title": "Hindu Scriptures Classification",
+    "description": "Detailed classification of Sanatana Dharma texts based on Shruti and Smriti, as described in Hindu-scriptures.txt",
+    "version": "2.4"
+  },
+  "nodeStyles": {
+    "root": { "fill": "#8e44ad", "radius": 12 },
+    "category": { "fill": "#3498db", "radius": 10 },
+    "subcategory": { "fill": "#e67e22", "radius": 8 },
+    "text": { "fill": "#27ae60", "radius": 6 },
+    "subtext": { "fill": "#f39c12", "radius": 5 }
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "name": "Sanatana Dharma\nScriptures",
+      "type": "root",
+      "description": "Complete classification of Hindu religious texts (Shruti and Smriti)",
+      "details": {
+        "overview": "Hindu scriptures are divided into Shruti (heard/revealed) and Smriti (remembered/composed) texts.",
+        "significance": "These texts form the foundation of Hindu philosophy, theology, and practice.",
+        "reference": "Based on Hindu-scriptures.txt"
+      }
+    },
+    {
+      "id": "shruti",
+      "name": "Shruti\n(श्रुति)",
+      "type": "category",
+      "parent": "root",
+      "description": "That which has been heard or revealed; considered eternal and divine.",
+      "details": {
+        "meaning": "Heard/communicated from the beginning; authorless (apaurusheya).",
+        "origin": "Rishis heard Vedas in deep meditation (samadhi).",
+        "forms": "Comes in two forms: Nigamas (Vedas) and Agamas.",
+        "authority": "Highest scriptural authority in Hinduism."
+      }
+    },
+    {
+      "id": "vedas",
+      "name": "Vedas\n(वेद)",
+      "type": "subcategory",
+      "parent": "shruti",
+      "description": "It is said/believed that Rishi in the state of Tapasya heard Vedas directly from Parabrahma/Parameshwara. Vedas are called अपौरुषेय that means it is not created by man i.e impersonal/authorless and believed to be the words of Ishwara, eternal. Rishish are द्रष्टा (seers) rather than author of Veda.",
+      "details": {
+        "parts": "Each Veda has four parts: Samhita (core hymns), Brahmana (rituals/commentaries), Aranyaka (forest treatises), Upanishad (philosophy)."
+      },
+      "perspectives": [
+        {
+          "label": "By Types of Vedas",
+          "children": ["rigveda", "samaveda", "yajurveda", "atharvaveda"]
+        },
+        {
+          "label": "By Vedic Sections",
+          "children": [
+            "samhita", "brahmana", "aranyaka", "upanishad"
+          ]
+        }
+      ]
+    },
+    { "id": "samhita", "name": "Samhita", "type": "subtext", "parent": "vedas", "description": "Samhita is the core part of Veda (which is heard by Rishis)" },
+    { "id": "brahmana", "name": "Brahmana", "type": "subtext", "parent": "vedas", "description": "Brahmanas are the interpretation and commentaries on Mantra/Samhita part of Vedas which helps to explain, understand the meaning and significance of Veda and also provides the way of doing rites (i.e rituals). As it gives Karma Kanda in Vedic Yajna, known as Karma Kanda (कर्मकाण्ड) part of Veda. Due to very much significance/influence of Brahmanas (ब्राह्मणग्रन्थ), it is considered as the part of Veda and hence classified as Shruti. Sayanacharya in his Bhashya on Rigveda, said that मंत्र ब्राह्मणात्मको वेद which means Mantra(मंत्र) and Brahmanatmak(ब्राह्मणात्मक) combined forms Veda. मन्त्रब्राह्मणयोर्वेदनामधेयम् (From Aapstamb Srauta Sutra) means Mantra as well as Brahmana parts are Veda." },
+    { "id": "aranyaka", "name": "Aranyaka", "type": "subtext", "parent": "vedas", "description": "Aaranyaka are extracted from Brahmanas." },
+    { "id": "upanishad", "name": "Upanishad", "type": "subtext", "parent": "vedas", "description": "Philosophical texts of Veda." },
+    { "id": "rigveda", "name": "Rigveda\n(ऋग्वेद)", "type": "text", "parent": "vedas", "description": "Oldest Veda, hymns to deities.", "details": { "parts": "Samhita, Brahmana, Aranyaka, Upanishad" } },
+    { "id": "rig_samhita", "name": "Samhita", "type": "subtext", "parent": "rigveda", "description": "Core hymns of Rigveda." },
+    { "id": "rigveda_samhita", "name": "Rigveda Samhita", "type": "subtext", "parent": "rig_samhita", "description": "Main collection of Rigvedic hymns." },
+    { "id": "rig_brahmana", "name": "Brahmana", "type": "subtext", "parent": "rigveda", "description": "Rituals/commentaries of Rigveda." },
+    { "id": "aitareya_brahmana", "name": "Aitareya Brahmana", "type": "subtext", "parent": "rig_brahmana", "description": "Principal Brahmana of Rigveda." },
+    { "id": "kaushitaki_brahmana", "name": "Kaushitaki Brahmana", "type": "subtext", "parent": "rig_brahmana", "description": "Another Brahmana of Rigveda." },
+    { "id": "rig_aranyaka", "name": "Aranyaka", "type": "subtext", "parent": "rigveda", "description": "Forest treatises of Rigveda." },
+    { "id": "aitareya_aranyaka", "name": "Aitareya Aranyaka", "type": "subtext", "parent": "rig_aranyaka", "description": "Principal Aranyaka of Rigveda." },
+    { "id": "kaushitaki_aranyaka", "name": "Kaushitaki Aranyaka", "type": "subtext", "parent": "rig_aranyaka", "description": "Another Aranyaka of Rigveda." },
+    { "id": "rig_upanishad", "name": "Upanishad", "type": "subtext", "parent": "rigveda", "description": "Philosophical texts of Rigveda." },
+    { "id": "aitareya_upanishad", "name": "Aitareya Upanishad", "type": "subtext", "parent": "rig_upanishad", "description": "Principal Upanishad of Rigveda." },
+    { "id": "samaveda", "name": "Samaveda\n(सामवेद)", "type": "text", "parent": "vedas", "description": "Veda of melodies and chants.", "details": { "parts": "Samhita, Brahmana, Aranyaka, Upanishad" } },
+    { "id": "sama_samhita", "name": "Samhita", "type": "subtext", "parent": "samaveda", "description": "Core hymns of Samaveda." },
+    { "id": "samaveda_samhita", "name": "Samaveda Samhita", "type": "subtext", "parent": "sama_samhita", "description": "Main collection of Samaveda hymns." },
+    { "id": "sama_brahmana", "name": "Brahmana", "type": "subtext", "parent": "samaveda", "description": "Rituals/commentaries of Samaveda." },
+    { "id": "tandya_mahabrahmana", "name": "Tandya Mahabrahmana (Panchavimsha)", "type": "subtext", "parent": "sama_brahmana", "description": "Principal Brahmana of Samaveda." },
+    { "id": "jaiminiya_brahmana", "name": "Jaiminiya Brahmana", "type": "subtext", "parent": "sama_brahmana", "description": "Another Brahmana of Samaveda." },
+    { "id": "sama_aranyaka", "name": "Aranyaka", "type": "subtext", "parent": "samaveda", "description": "Forest treatises of Samaveda." },
+    { "id": "samaveda_aranyaka", "name": "Samaveda Aranyaka", "type": "subtext", "parent": "sama_aranyaka", "description": "Principal Aranyaka of Samaveda." },
+    { "id": "sama_upanishad", "name": "Upanishad", "type": "subtext", "parent": "samaveda", "description": "Philosophical texts of Samaveda." },
+    { "id": "chandogya_upanishad", "name": "Chandogya Upanishad", "type": "subtext", "parent": "sama_upanishad", "description": "Principal Upanishad of Samaveda." },
+    { "id": "kena_upanishad", "name": "Kena Upanishad", "type": "subtext", "parent": "sama_upanishad", "description": "Principal Upanishad of Samaveda." },
+    { "id": "yajurveda", "name": "Yajurveda\n(यजुर्वेद)", "type": "text", "parent": "vedas", "description": "Veda of sacrificial formulas.", "details": { "parts": "Samhita, Brahmana, Aranyaka, Upanishad" } },
+    { "id": "yajur_samhita", "name": "Samhita", "type": "subtext", "parent": "yajurveda", "description": "Core hymns of Yajurveda." },
+    { "id": "shukla_yajurveda_samhita", "name": "Shukla Yajurveda Samhita (Vajasaneyi)", "type": "subtext", "parent": "yajur_samhita", "description": "White Yajurveda Samhita." },
+    { "id": "krishna_yajurveda_samhita", "name": "Krishna Yajurveda Samhita (Taittiriya)", "type": "subtext", "parent": "yajur_samhita", "description": "Black Yajurveda Samhita." },
+    { "id": "yajur_brahmana", "name": "Brahmana", "type": "subtext", "parent": "yajurveda", "description": "Rituals/commentaries of Yajurveda." },
+    { "id": "shatapatha_brahmana", "name": "Shatapatha Brahmana", "type": "subtext", "parent": "yajur_brahmana", "description": "Principal Brahmana of Shukla Yajurveda." },
+    { "id": "taittiriya_brahmana", "name": "Taittiriya Brahmana", "type": "subtext", "parent": "yajur_brahmana", "description": "Principal Brahmana of Krishna Yajurveda." },
+    { "id": "yajur_aranyaka", "name": "Aranyaka", "type": "subtext", "parent": "yajurveda", "description": "Forest treatises of Yajurveda." },
+    { "id": "taittiriya_aranyaka", "name": "Taittiriya Aranyaka", "type": "subtext", "parent": "yajur_aranyaka", "description": "Principal Aranyaka of Yajurveda." },
+    { "id": "brihadaranyaka_aranyaka", "name": "Brihadaranyaka Aranyaka", "type": "subtext", "parent": "yajur_aranyaka", "description": "Another Aranyaka of Yajurveda." },
+    { "id": "yajur_upanishad", "name": "Upanishad", "type": "subtext", "parent": "yajurveda", "description": "Philosophical texts of Yajurveda." },
+    { "id": "isha_upanishad", "name": "Isha Upanishad", "type": "subtext", "parent": "yajur_upanishad", "description": "Principal Upanishad of Yajurveda." },
+    { "id": "brihadaranyaka_upanishad", "name": "Brihadaranyaka Upanishad", "type": "subtext", "parent": "yajur_upanishad", "description": "Principal Upanishad of Yajurveda." },
+    { "id": "atharvaveda", "name": "Atharvaveda\n(अथर्ववेद)", "type": "text", "parent": "vedas", "description": "Veda of everyday life and practical knowledge.", "details": { "parts": "Samhita, Brahmana, Aranyaka, Upanishad" } },
+    { "id": "atharva_samhita", "name": "Samhita", "type": "subtext", "parent": "atharvaveda", "description": "Core hymns of Atharvaveda." },
+    { "id": "atharvaveda_samhita", "name": "Atharvaveda Samhita", "type": "subtext", "parent": "atharva_samhita", "description": "Main collection of Atharvaveda hymns." },
+    { "id": "atharva_brahmana", "name": "Brahmana", "type": "subtext", "parent": "atharvaveda", "description": "Rituals/commentaries of Atharvaveda." },
+    { "id": "gopatha_brahmana", "name": "Gopatha Brahmana", "type": "subtext", "parent": "atharva_brahmana", "description": "Principal Brahmana of Atharvaveda." },
+    { "id": "atharva_aranyaka", "name": "Aranyaka", "type": "subtext", "parent": "atharvaveda", "description": "Forest treatises of Atharvaveda." },
+    { "id": "atharvaveda_aranyaka", "name": "Atharvaveda Aranyaka", "type": "subtext", "parent": "atharva_aranyaka", "description": "Principal Aranyaka of Atharvaveda (rare)." },
+    { "id": "atharva_upanishad", "name": "Upanishad", "type": "subtext", "parent": "atharvaveda", "description": "Philosophical texts of Atharvaveda." },
+    { "id": "mundaka_upanishad", "name": "Mundaka Upanishad", "type": "subtext", "parent": "atharva_upanishad", "description": "Principal Upanishad of Atharvaveda." },
+    { "id": "mandukya_upanishad", "name": "Mandukya Upanishad", "type": "subtext", "parent": "atharva_upanishad", "description": "Principal Upanishad of Atharvaveda." },
+    { "id": "prashna_upanishad", "name": "Prashna Upanishad", "type": "subtext", "parent": "atharva_upanishad", "description": "Principal Upanishad of Atharvaveda." },
+    { "id": "agamas", "name": "Agamas\n(आगम)", "type": "subcategory", "parent": "shruti", "description": "Manuals of Divine Worship; parallel to Vedas.", "details": { "forms": "Three main types: Vaishnava, Shaiva, Shakta.", "note": "Agamas focus on devotional worship, rituals, and temple construction." } },
+    { "id": "vaishnava_agamas", "name": "Vaishnava Agamas\n(पाञ्चरात्र/वैखानस)", "type": "text", "parent": "agamas", "description": "215 Vaishnava Agamas.", "details": { "classes": "Pancharatra (7 groups: Brahma, Shaiva, Kaumara, Vasishtha, Kapila, Gautamiya, Naradiya), Vaikhanasa, Pratishthasara, Vijñana-lalita." } },
+    { "id": "isvara_samhita", "name": "Isvara Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "ahirbudhnya_samhita", "name": "Ahirbudhnya Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "paushkara_samhita", "name": "Paushkara Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "parama_samhita", "name": "Parama Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "sattvata_samhita", "name": "Sattvata Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "brihad_brahma_samhita", "name": "Brihad-Brahma Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "jnanamritasara_samhita", "name": "Jñanamritasara Samhita", "type": "subtext", "parent": "vaishnava_agamas", "description": "Important Vaishnava Agama." },
+    { "id": "shaiva_agamas", "name": "Shaiva Agamas\n(शैव आगम)", "type": "text", "parent": "agamas", "description": "28 Shaiva Agamas.", "details": { "divisions": "Kashmir Shaivism (non-dual), Southern Shaivism (dualistic).", "upa_agamas": "Each Agama has upa-agamas (subsidiary texts)." } },
+    { "id": "kamika_agama", "name": "Kamika Agama", "type": "subtext", "parent": "shaiva_agamas", "description": "Chief Shaiva Agama." },
+    { "id": "shakta_agamas", "name": "Shakta Agamas\n(शाक्त आगम)", "type": "text", "parent": "agamas", "description": "27 Shakta Agamas (Tantras).", "details": { "important": "Mahanirvana Tantra, Kularnava Tantra, Kulasara Tantra, Prapanchasara Tantra, Tantraraja Rudra-Yamala, Brahma-Yamala, Vishnu-Yamala, Todala Tantra." } },
+    { "id": "mahanirvana_tantra", "name": "Mahanirvana Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "kularnava_tantra", "name": "Kularnava Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "kulasara_tantra", "name": "Kulasara Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "prapanchasara_tantra", "name": "Prapanchasara Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "tantraraja_rudra_yamala", "name": "Tantraraja Rudra-Yamala Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "brahma_yamala_tantra", "name": "Brahma-Yamala Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "vishnu_yamala_tantra", "name": "Vishnu-Yamala Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "todala_tantra", "name": "Todala Tantra", "type": "subtext", "parent": "shakta_agamas", "description": "Important Shakta Agama." },
+    { "id": "smriti", "name": "Smriti\n(स्मृति)", "type": "category", "parent": "root", "description": "That which is remembered or based on memory; human compositions.", "details": { "nature": "Texts composed by Rishis, based on Shruti.", "authority": "Secondary to Shruti but highly revered.", "examples": "Vedanga, Upaveda, Upanga, Dharma Shastra, Purana, Itihasa, Darshana, etc." } },
+    { "id": "vedanga", "name": "Vedanga\n(वेदाङ्ग)", "type": "subcategory", "parent": "smriti", "description": "Six limbs of the Vedas; auxiliary sciences.", "details": { "purpose": "Essential for studying and understanding Vedas.", "count": "Six: Shiksha, Vyakarana, Nirukta, Chhanda, Jyotisha, Kalpa." } },
+    { "id": "shiksha", "name": "Shiksha\n(शिक्षा)", "type": "text", "parent": "vedanga", "description": "Phonetics and pronunciation.", "details": { "propagator": "Panini" } },
+    { "id": "vyakarana", "name": "Vyakarana\n(व्याकरण)", "type": "text", "parent": "vedanga", "description": "Sanskrit grammar.", "details": { "propagators": "Panini (Ashtadhyayi), Katyayana (Vritti), Patanjali (Mahabhashya)" } },
+    { "id": "nirukta", "name": "Nirukta\n(निरुक्त)", "type": "text", "parent": "vedanga", "description": "Etymology and explanation of difficult words.", "details": { "propagator": "Yaska" } },
+    { "id": "chhanda", "name": "Chhanda\n(छन्द)", "type": "text", "parent": "vedanga", "description": "Prosody and poetic meters.", "details": { "propagator": "Pingala (Chhandasutras)" } },
+    { "id": "jyotisha", "name": "Jyotisha\n(ज्योतिष)", "type": "text", "parent": "vedanga", "description": "Astronomy and astrology.", "details": { "propagators": "Aaditya and Garg" } },
+    { "id": "kalpa", "name": "Kalpa\n(कल्प)", "type": "text", "parent": "vedanga", "description": "Ritual procedures and ceremonies.", "details": { "propagators": "Many Acharyas; includes Srautasutras, Grihyasutras, Shulbasutras, Dharmasutras." } },
+    { "id": "upaveda", "name": "Upaveda\n(उपवेद)", "type": "subcategory", "parent": "smriti", "description": "The Upavedas are auxiliary disciplines traditionally associated with each of the four Vedas. They cover applied knowledge such as medicine, warfare, music, and architecture.", "details": { "examples": "Ayurveda, Dhanurveda, Gandharvaveda, Arthashastra." } },
+    {
+      "id": "ayurveda",
+      "name": "Āyurveda\n(आयुर्वेद)",
+      "type": "text",
+      "parent": "upaveda",
+      "description": "The science of life, health, and medicine. Associated with the Ṛgveda. Major texts include Charaka Saṁhitā and Suśruta Saṁhitā."
+    },
+    {
+      "id": "dhanurveda",
+      "name": "Dhanurveda\n(धनुर्वेद)",
+      "type": "text",
+      "parent": "upaveda",
+      "description": "The science of warfare, archery, and military arts. Associated with the Yajurveda. Covers martial disciplines, weapons, and battle strategies."
+    },
+    {
+      "id": "gandharvaveda",
+      "name": "Gāndharvaveda\n(गान्धर्ववेद)",
+      "type": "text",
+      "parent": "upaveda",
+      "description": "The science of music, sound, and performing arts. Associated with the Sāmaveda. It forms the foundation for Indian classical music and dance."
+    },
+    {
+      "id": "sthapathya_veda",
+      "name": "Sthāpatya Veda\n(स्थापत्यवेद)",
+      "type": "text",
+      "parent": "upaveda",
+      "description": "The science of architecture, engineering, and construction. Associated with the Atharvaveda. Includes principles of town planning, building temples, and vastu-śāstra."
+    },
+    { "id": "upanga", "name": "Upanga\n(उपांग)", "type": "subcategory", "parent": "smriti", "description": "Minor limbs; supplementary texts.", "details": { "examples": "Dharma Shastra, Puranas, Darshana, etc." } },
+    { "id": "dharma_shastra", "name": "Dharma Shastra\n(धर्मशास्त्र)", "type": "text", "parent": "smriti", "description": "A category of Smṛti texts that prescribe dharma (law, ethics, conduct) based on the Vedas. Includes rules for individuals, society, and legal procedures.", "details": { "examples": "Manu, Yajnavalkya, Narada, Parashara, etc." } },
+    {
+      "id": "dharma_sutra",
+      "name": "Dharma Sūtras",
+      "type": "text",
+      "parent": "dharma_shastra",
+      "description": "Early prose texts attached to Vedic schools outlining rules on dharma, rituals, and conduct."
+    },
+    {
+      "id": "apastamba_sutra",
+      "name": "Āpastamba Dharma Sūtra",
+      "type": "text",
+      "parent": "dharma_sutra",
+      "description": "One of the earliest Dharma Sūtras, associated with the Taittirīya branch of the Yajurveda. Covers duties, penances, and rituals."
+    },
+    {
+      "id": "baudhayana_sutra",
+      "name": "Baudhāyana Dharma Sūtra",
+      "type": "text",
+      "parent": "dharma_sutra",
+      "description": "Associated with the Kṛṣṇa Yajurveda; discusses rituals, caste duties, and penances."
+    },
+    {
+      "id": "gautama_sutra",
+      "name": "Gautama Dharma Sūtra",
+      "type": "text",
+      "parent": "dharma_sutra",
+      "description": "Possibly the oldest Dharma Sūtra; linked with the Sāmaveda; emphasizes social and legal duties."
+    },
+    {
+      "id": "vasistha_sutra",
+      "name": "Vasiṣṭha Dharma Sūtra",
+      "type": "text",
+      "parent": "dharma_sutra",
+      "description": "Covers purification, ethics, and dharma, possibly from an independent or lost Vedic tradition."
+    },
+    {
+      "id": "smriti_texts",
+      "name": "Dharma Smṛtis",
+      "type": "text",
+      "parent": "dharma_shastra",
+      "description": "Verse-form law codes elaborating on Dharma Sūtras; more developed, poetic, and systematic."
+    },
+    {
+      "id": "manu_smriti",
+      "name": "Manu Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "The most well-known Dharmaśāstra, divided into 12 chapters covering ethics, law, and social order."
+    },
+    {
+      "id": "yajnavalkya_smriti",
+      "name": "Yājñavalkya Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "A more concise and juridically oriented Dharmaśāstra, widely used in medieval Hindu law."
+    },
+    {
+      "id": "narada_smriti",
+      "name": "Nārada Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "Specializes in legal procedure, judgeship, and court matters; foundational for Hindu law."
+    },
+    {
+      "id": "parasara_smriti",
+      "name": "Parāśara Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "Applies dharma to the Kali Yuga; seen as more lenient and family-oriented."
+    },
+    {
+      "id": "brihaspati_smriti",
+      "name": "Bṛhaspati Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "Focuses on law and economics; mostly survives in quotations and secondary references."
+    },
+    {
+      "id": "katyayana_smriti",
+      "name": "Kātyāyana Smṛti",
+      "type": "text",
+      "parent": "smriti_texts",
+      "description": "Deals with judicial procedure and property law."
+    },
+    { "id": "darshan_shastra", "name": "Darshan Shastra\n(दर्शनशास्त्र)", "type": "text", "parent": "smriti", "description": "The word Darśana comes from the root √dṛś (to see). It means a particular way or perspective of seeing the ultimate truth (tattva). All texts belonging to 6 Darshanas (Philosophy) : Nyāya, Vaiśeṣika, Sāṅkhya, Yoga, Mīmāṁsā, Vedānta accepts authority of Vedas. These Darshan/philosophies are based on various Darshan Sutras witten by Rishis. " },
+    {
+      "id": "nyaya_shastra",
+      "name": "Nyāya\n(न्यायशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "A system of logic and epistemology founded by Gautama. Nyāya focuses on valid means of knowledge (pramāṇas), critical reasoning, and debate as tools to attain liberation through true knowledge."
+    },
+    {
+      "id": "vaiseshika_shastra",
+      "name": "Vaiśeṣika\n(वैशेषिकशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "Founded by Kaṇāda, Vaiśeṣika presents a metaphysical system based on atomic theory and categorization of reality (padārthas). It explains the physical world as composed of eternal atoms and real substances, qualities, and actions."
+    },
+    {
+      "id": "sankhya_shastra",
+      "name": "Sāṅkhya\n(सांख्यशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "A dualistic system founded by sage Kapila, Sāṅkhya distinguishes between conscious self (puruṣa) and unconscious matter (prakṛti). Liberation is achieved by discriminative knowledge that separates the two."
+    },
+    {
+      "id": "yoga_shastra",
+      "name": "Yoga\n(योगशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "Codified by Patañjali in the Yoga Sūtras, Yoga builds on Sāṅkhya by integrating meditative practice and theism. Its eightfold path (aṣṭāṅga yoga) leads to mental discipline and spiritual liberation (kaivalya)."
+    },
+    {
+      "id": "mimamsa_shastra",
+      "name": "Mīmāṁsā\n(पूर्वमीमांसाशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "Also called Pūrva-Mīmāṁsā, this system, founded by Jaimini, emphasizes the ritualistic portion of the Vedas (karma-kāṇḍa). It affirms the authority of the Vedas and focuses on dharma through proper performance of Vedic duties."
+    },
+    {
+      "id": "vedanta_shastra",
+      "name": "Vedānta\n(वेदान्तशास्त्र)",
+      "type": "text",
+      "parent": "darshan_shastra",
+      "description": "Also known as Uttara-Mīmāṁsā, Vedānta interprets the philosophical portion of the Vedas (Upaniṣads). Based on the Brahma Sūtras, it explores the nature of Brahman, the soul, and liberation. Includes Advaita, Viśiṣṭādvaita, Dvaita, and other schools."
+    },
+    { "id": "advaita", "name": "Advaita", "type": "text", "parent": "vedanta_shastra", "description": "Only Brahman exists ultimately (non-dual). The world and individual identities are illusory appearances (māyā)" },
+    { "id": "dvaita", "name": "Dvaita", "type": "text", "parent": "vedanta_shastra", "description": "Brahman (Viṣṇu) is eternally distinct from souls and matter." },
+    { "id": "vishishtadvaita", "name": "Vishishtadvaita", "type": "text", "parent": "vedanta_shastra", "description": "Brahman is qualified by attributes — the sentient (jīvas) and insentient (matter) are real, and form His body." },
+    { "id": "suddhadvaita", "name": "Suddhadvaita", "type": "text", "parent": "vedanta_shastra", "description": "Everything is Brahman. No māyā, no illusion. The world is a real manifestation of God"},
+    { "id": "dvaitādvaita", "name": "Dvaitādvaita", "type": "text", "parent": "vedanta_shastra", "description": "There is simultaneous difference and non-difference between Brahman, jīva, and jagat."},
+    { "id": "puranas", "name": "Puranas\n(पुराण)", "type": "subcategory", "parent": "smriti", "description": "Ancient stories; 18 Mahapuranas and 18 Upapuranas.", "details": { "classification": "Puranas are classified as Sattva (Vaishnava), Rajas (Brahma), and Tamas (Shaiva) Puranas.", "note": "Each Purana contains five topics: creation, destruction, genealogy, reigns of Manus, and history of dynasties." } },
+    { "id": "puranas_sattva", "name": "Sattva Puranas\n(वैष्णव)", "type": "text", "parent": "puranas", "description": "Vaishnava (Sattvic) Puranas.", "details": { "note": "Emphasize Vishnu and sattvic qualities." } },
+    { "id": "bhagavata_purana", "name": "Bhagavata Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Devoted to Lord Vishnu/Krishna." },
+    { "id": "vishnu_purana", "name": "Vishnu Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Stories and philosophy of Lord Vishnu." },
+    { "id": "narada_purana", "name": "Narada Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Teachings of sage Narada." },
+    { "id": "garuda_purana", "name": "Garuda Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Afterlife, rituals, and Vishnu worship." },
+    { "id": "padma_purana", "name": "Padma Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Legends, cosmology, and Vishnu devotion." },
+    { "id": "varaha_purana", "name": "Varaha Purana", "type": "subtext", "parent": "puranas_sattva", "description": "Stories of Vishnu's Varaha avatar." },
+    { "id": "puranas_rajas", "name": "Rajas Puranas\n(ब्राह्म)", "type": "text", "parent": "puranas", "description": "Brahma (Rajasic) Puranas.", "details": { "note": "Emphasize Brahma and rajasic qualities." } },
+    { "id": "brahma_purana", "name": "Brahma Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Creation and cosmology." },
+    { "id": "brahmavaivarta_purana", "name": "Brahmavaivarta Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Mythology and cosmology." },
+    { "id": "markandeya_purana", "name": "Markandeya Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Stories of sage Markandeya." },
+    { "id": "bhavishya_purana", "name": "Bhavishya Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Prophecies and future events." },
+    { "id": "vamana_purana", "name": "Vamana Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Vishnu's Vamana avatar and legends." },
+    { "id": "brahmanda_purana", "name": "Brahmanda Purana", "type": "subtext", "parent": "puranas_rajas", "description": "Cosmology and genealogies." },
+    { "id": "puranas_tamas", "name": "Tamas Puranas\n(शैव)", "type": "text", "parent": "puranas", "description": "Shaiva (Tamasic) Puranas.", "details": { "note": "Emphasize Shiva and tamasic qualities." } },
+    { "id": "linga_purana", "name": "Linga Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Worship and stories of Shiva." },
+    { "id": "skanda_purana", "name": "Skanda Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Stories of Skanda (Kartikeya) and Shiva." },
+    { "id": "agni_purana", "name": "Agni Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Rituals, cosmology, and Shiva worship." },
+    { "id": "matsya_purana", "name": "Matsya Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Stories of Matsya avatar and Shiva." },
+    { "id": "kurma_purana", "name": "Kurma Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Kurma avatar and Shaiva legends." },
+    { "id": "shivapurana", "name": "Shiva Purana", "type": "subtext", "parent": "puranas_tamas", "description": "Glory and stories of Lord Shiva." },
+    { "id": "upapuranas", "name": "Upapuranas\n(उपपुराण)", "type": "text", "parent": "puranas", "description": "Minor Puranas; supplementary ancient stories.", "details": { "count": "Traditionally 18 Upapuranas.", "examples": "Examples: Sanatkumara, Narasimha, Brihannaradiya, Sivarahasya, Durvasa, Kapila, Vamana, Kalika, Samba, etc." } },
+    { "id": "itihasa", "name": "Itihasa\n(इतिहास)", "type": "text", "parent": "smriti", "description": "Epic histories.", "details": { "examples": "Ramayana, Mahabharata (includes Bhagavad Gita)." } },
+    { "id": "ramayana", "name": "Ramayana", "type": "subtext", "parent": "itihasa", "description": "Epic history of Lord Rama." },
+    { "id": "mahabharata", "name": "Mahabharata", "type": "subtext", "parent": "itihasa", "description": "Epic history of Bharata." },
+    { "id": "bhagavad_gita", "name": "Bhagavad Gita", "type": "subtext", "parent": "mahabharata", "description": "Philosophical text of Mahabharata." },
+    { "id": "harivamsa", "name": "Harivamsa", "type": "subtext", "parent": "mahabharata", "description": "Harivamsa is the part of Mahabharata which is about the life of Lord Krishna." }
+  ]
+} 

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindu Scriptures Progressive Tree</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            overflow-x: auto;
+            color: white;
+        }
+        .container {
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tree-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            height: 80vh;
+            overflow: hidden;
+        }
+        .tree-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center center;
+        }
+        .node {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+        }
+        .node.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .node-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        .node-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: transform 0.6s;
+            transform: rotate(-45deg) translateX(-100%);
+        }
+        .node:hover .node-circle::before {
+            transform: rotate(-45deg) translateX(100%);
+        }
+        .node:hover .node-circle {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .node-label {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            max-width: 140px;
+            line-height: 1.3;
+        }
+        .node-count {
+            font-size: 0.8em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        .controls {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .control-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .breadcrumb {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            padding: 15px 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9em;
+            max-width: 400px;
+        }
+        .breadcrumb-item {
+            display: inline;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .breadcrumb-item:hover {
+            opacity: 1;
+        }
+        .breadcrumb-item:not(:last-child)::after {
+            content: ' → ';
+            margin: 0 8px;
+            opacity: 0.5;
+        }
+        .breadcrumb-item.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+        .info-panel {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 25px 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            z-index: 10;
+        }
+        .info-panel.visible {
+            opacity: 1;
+        }
+        .info-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        .info-description {
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        .perspective-bar {
+            position: fixed;
+            top: 120px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 20;
+        }
+        .perspective-btn {
+            background: rgba(255,255,255,0.10);
+            border: 1.5px solid #ffd700;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 18px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: pre-line;
+            margin-bottom: 0;
+        }
+        .perspective-btn.selected {
+            background: rgba(255,255,255,0.25);
+        }
+        @media (max-width: 768px) {
+            .tree-container { height: 70vh; }
+            .controls { position: relative; top: auto; left: auto; margin-bottom: 20px; flex-direction: row; justify-content: center; flex-wrap: wrap; }
+            .breadcrumb { position: relative; top: auto; right: auto; margin-bottom: 20px; text-align: center; }
+        }
+        @media (max-width: 900px) {
+            .perspective-bar {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin: 10px 0;
+                top: auto;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button class="control-btn" id="reset-btn">🏠 Reset to Root</button>
+        </div>
+        <div class="breadcrumb" id="breadcrumb">
+            <span class="breadcrumb-item active">Hindu Scriptures</span>
+        </div>
+        <div class="tree-container">
+            <div class="tree-content" id="tree-content"></div>
+        </div>
+        <div class="info-panel" id="info-panel">
+            <div class="info-title" id="info-title">Hindu Scriptures</div>
+            <div class="info-description" id="info-description">
+                Click on any category to explore the rich hierarchy of Hindu sacred texts. Start with Shruti (revealed texts) or Smriti (traditional texts).
+            </div>
+        </div>
+    </div>
+    <script>
+    // Fetch the config and build a progressive tree
+    let scriptureData = null;
+    fetch('hindu_scriptures_config.json')
+        .then(r => r.json())
+        .then(config => {
+            scriptureData = buildProgressiveTreeData(config);
+            window.tree = new ProgressiveTree();
+        });
+
+    // Convert flat config to nested tree for progressive navigation
+    function buildProgressiveTreeData(config) {
+        const nodeMap = new Map();
+        config.nodes.forEach(node => nodeMap.set(node.id, { ...node, children: [] }));
+        config.nodes.forEach(node => {
+            if (node.parent) {
+                nodeMap.get(node.parent).children.push(nodeMap.get(node.id));
+            }
+        });
+        // Find root
+        let root = config.nodes.find(n => !n.parent);
+        return nodeMap.get(root.id);
+    }
+
+    class ProgressiveTree {
+        constructor() {
+            this.currentPath = [];
+            this.currentData = scriptureData;
+            this.treeContent = document.getElementById('tree-content');
+            this.breadcrumb = document.getElementById('breadcrumb');
+            this.infoPanel = document.getElementById('info-panel');
+            this.visibleNodes = new Set();
+            this.selectedPerspective = null; // for multi-perspective nodes
+            this.setupEventListeners();
+            this.render();
+            this.showInfo(scriptureData);
+        }
+        setupEventListeners() {
+            document.getElementById('reset-btn').addEventListener('click', () => this.reset());
+        }
+        render() {
+            this.treeContent.innerHTML = '';
+            this.visibleNodes.clear();
+            // Handle multi-perspective nodes
+            if (this.currentData.perspectives && this.currentData.perspectives.length > 0) {
+                this.renderPerspectives(this.currentData);
+            } else if (this.currentData.children && this.currentData.children.length > 0) {
+                this.renderLevel(this.currentData.children, 1);
+            } else {
+                this.renderLeafNode(this.currentData);
+            }
+            this.updateBreadcrumb();
+            this.showNodesSequentially();
+        }
+        renderPerspectives(node) {
+            // Remove any existing perspective bar
+            let oldBar = document.getElementById('perspective-bar');
+            if (oldBar) oldBar.remove();
+
+            // Perspective selector UI
+            const perspectiveBar = document.createElement('div');
+            perspectiveBar.className = 'perspective-bar';
+            perspectiveBar.id = 'perspective-bar';
+
+            node.perspectives.forEach((persp, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'perspective-btn' + ((this.selectedPerspective === idx || (this.selectedPerspective === null && idx === 0)) ? ' selected' : '');
+                btn.textContent = `${persp.label}${persp.children ? `\n${persp.children.length} items` : ''}`;
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    this.selectedPerspective = idx;
+                    this.render();
+                });
+                perspectiveBar.appendChild(btn);
+            });
+
+            // Add to container (not tree-content)
+            document.querySelector('.container').appendChild(perspectiveBar);
+
+            // Show children for selected perspective
+            const idx = this.selectedPerspective !== null ? this.selectedPerspective : 0;
+            const persp = node.perspectives[idx];
+            const children = (persp.children || []).map(cid => this.findNodeById(cid));
+            if (children.length > 0) {
+                this.renderLevel(children, 1);
+            } else {
+                this.renderLeafNode(node);
+            }
+        }
+        findNodeById(id) {
+            // Traverse from root
+            const queue = [scriptureData];
+            while (queue.length) {
+                const n = queue.shift();
+                if (n.id === id) return n;
+                if (n.children) queue.push(...n.children);
+            }
+            return null;
+        }
+        renderLevel(nodes, level) {
+            const centerX = 50;
+            const startY = 30;
+            const spacing = Math.min(60, 80 / nodes.length);
+            nodes.forEach((node, index) => {
+                const x = centerX + (index - (nodes.length - 1) / 2) * spacing;
+                const y = startY + level * 25;
+                this.createNode(node, x, y, level, index);
+            });
+        }
+        createNode(data, x, y, level, index) {
+            const nodeEl = document.createElement('div');
+            nodeEl.className = `node level-${level}`;
+            nodeEl.style.left = `${x}%`;
+            nodeEl.style.top = `${y}%`;
+            nodeEl.style.transitionDelay = `${index * 150}ms`;
+            const circle = document.createElement('div');
+            circle.className = 'node-circle';
+            const label = document.createElement('div');
+            label.className = 'node-label';
+            label.innerHTML = `
+                <div>${data.name.replace(/\n/g, '<br>')}</div>
+                ${data.children && data.children.length ? `<div class="node-count">${data.children.length} items</div>` : ''}
+            `;
+            nodeEl.appendChild(circle);
+            nodeEl.appendChild(label);
+            nodeEl.addEventListener('click', e => { e.stopPropagation(); this.selectNode(data); });
+            nodeEl.addEventListener('mouseenter', () => this.showInfo(data));
+            this.treeContent.appendChild(nodeEl);
+            this.visibleNodes.add(nodeEl);
+        }
+        renderLeafNode(data) {
+            const nodeEl = document.createElement('div');
+            nodeEl.className = 'node level-4';
+            nodeEl.style.left = '50%';
+            nodeEl.style.top = '40%';
+            nodeEl.style.transform = 'translateX(-50%)';
+            const circle = document.createElement('div');
+            circle.className = 'node-circle';
+            circle.style.width = '200px';
+            circle.style.height = '200px';
+            const label = document.createElement('div');
+            label.className = 'node-label';
+            label.style.fontSize = '1.3em';
+            label.innerHTML = data.name.replace(/\n/g, '<br>');
+            nodeEl.appendChild(circle);
+            nodeEl.appendChild(label);
+            this.treeContent.appendChild(nodeEl);
+            this.visibleNodes.add(nodeEl);
+            setTimeout(() => nodeEl.classList.add('visible'), 100);
+        }
+        showNodesSequentially() {
+            const nodes = Array.from(this.visibleNodes);
+            nodes.forEach((node, index) => {
+                setTimeout(() => {
+                    node.classList.add('visible');
+                }, index * 150);
+            });
+            setTimeout(() => {
+                this.infoPanel.classList.add('visible');
+            }, nodes.length * 150 + 200);
+        }
+        selectNode(data) {
+            // Reset perspective if navigating to a new node
+            this.selectedPerspective = null;
+            if (data.perspectives && data.perspectives.length > 0) {
+                this.currentPath.push(this.currentData);
+                this.currentData = data;
+                this.hideNodesAndRender();
+            } else if (data.children && data.children.length > 0) {
+                this.currentPath.push(this.currentData);
+                this.currentData = data;
+                this.hideNodesAndRender();
+            } else {
+                this.showInfo(data);
+            }
+        }
+        hideNodesAndRender() {
+            this.infoPanel.classList.remove('visible');
+            const nodes = Array.from(this.visibleNodes);
+            nodes.forEach((node, index) => {
+                setTimeout(() => {
+                    node.classList.remove('visible');
+                }, index * 50);
+            });
+            setTimeout(() => {
+                this.render();
+            }, nodes.length * 50 + 100);
+        }
+        showInfo(data) {
+            document.getElementById('info-title').textContent = data.name.replace(/\n/g, ' ');
+            let desc = data.description || '';
+            if (data.details) {
+                for (const [k, v] of Object.entries(data.details)) {
+                    desc += `\n${k.charAt(0).toUpperCase() + k.slice(1)}: ${v}`;
+                }
+            }
+            document.getElementById('info-description').textContent = desc.trim();
+        }
+        updateBreadcrumb() {
+            const breadcrumbItems = [scriptureData.name.replace(/\n/g, ' ')];
+            for (const pathItem of this.currentPath) {
+                breadcrumbItems.push(pathItem.name.replace(/\n/g, ' '));
+            }
+            if (this.currentData !== scriptureData) {
+                breadcrumbItems.push(this.currentData.name.replace(/\n/g, ' '));
+            }
+            this.breadcrumb.innerHTML = breadcrumbItems
+                .map((item, index) => {
+                    const isActive = index === breadcrumbItems.length - 1;
+                    const isClickable = index < breadcrumbItems.length - 1;
+                    return `<span class="breadcrumb-item ${isActive ? 'active' : ''}" 
+                            ${isClickable ? `onclick="tree.navigateToBreadcrumb(${index})"` : ''}>
+                            ${item}
+                           </span>`;
+                })
+                .join('');
+        }
+        navigateToBreadcrumb(index) {
+            this.selectedPerspective = null;
+            if (index === 0) {
+                this.reset();
+            } else {
+                this.currentPath = this.currentPath.slice(0, index);
+                this.currentData = this.currentPath[index - 1] || scriptureData;
+                this.hideNodesAndRender();
+            }
+        }
+        reset() {
+            this.selectedPerspective = null;
+            this.currentPath = [];
+            this.currentData = scriptureData;
+            this.hideNodesAndRender();
+        }
+    }
+    </script>
+</body>
+</html>
