@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Hindu Scriptures Classification",
-    "description": "Detailed classification of Sanatana Dharma texts based on Shruti and Smriti, as described in Hindu-scriptures.txt",
+    "description": "Detailed classification of Sanatana Dharma texts based on Shruti and Smriti",
     "version": "2.4"
   },
   "nodeStyles": {
@@ -19,8 +19,7 @@
       "description": "Complete classification of Hindu religious texts (Shruti and Smriti)",
       "details": {
         "overview": "Hindu scriptures are divided into Shruti (heard/revealed) and Smriti (remembered/composed) texts.",
-        "significance": "These texts form the foundation of Hindu philosophy, theology, and practice.",
-        "reference": "Based on Hindu-scriptures.txt"
+        "significance": "These texts form the foundation of Hindu philosophy, theology, and practice."
       }
     },
     {
